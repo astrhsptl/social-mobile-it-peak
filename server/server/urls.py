@@ -5,6 +5,8 @@ from drf_yasg import openapi
 from rest_framework import permissions
 
 from .settings import DEBUG
+from django.conf import settings
+from django.conf.urls.static import static
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -29,7 +31,12 @@ urlpatterns = [
             path('auth/', include('authsystem.urls')),
         ])),
     ]))
-]
+] + static(
+    settings.STATIC_URL, document_root=settings.STATIC_ROOT
+) + static(
+    settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+)
+
 
 if DEBUG:
     import debug_toolbar

@@ -30,7 +30,6 @@ class Points(models.Model):
         editable=False,
         verbose_name='id',)
     title = models.CharField(max_length=256)
-    discription = models.CharField(max_length=4096)
     category = models.ForeignKey(Category, models.CASCADE)
     address = models.CharField(max_length=128)
     image = models.ImageField(upload_to='points/%Y/%m/%d/', null=True)

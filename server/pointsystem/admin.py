@@ -4,7 +4,7 @@ from .models import Category, Points
 
 class PointsAdmin(admin.ModelAdmin):
     fields = (
-        'id', 'title',  'discription',
+        'id', 'title',  'image', 
         'category', 'address', 'longitude', 'latitude',
     )
     list_display = (
@@ -26,7 +26,7 @@ class PointsAdmin(admin.ModelAdmin):
 
 class CategoryAdmin(admin.ModelAdmin):
     fields = (
-        'id', 'title',  'description',
+        'id', 'title',  'description', 'image',
     )
     list_display = (
         'id', 'title',

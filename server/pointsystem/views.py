@@ -32,4 +32,7 @@ class PointsByCategoryView(ListAPIView):
         return super().get(request, *args, **kwargs)        
     
     def get_queryset(self, *args):
-        return self.queryset.filter(Q(category_id=self.request.query_params['category_id']))
+        try:
+            return self.queryset.filter(Q(category_id=self.request.query_params['category_id']))
+        except:
+            return Points.objects.all()
