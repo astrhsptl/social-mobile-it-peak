@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { useEffect, useState } from 'react';
 import RenderBlockComponents from '../components/RenderBlockComponents';
 import loadData from '../utils/utils';
+import Loading from '../components/Loading';
 
 
 const Container = styled.View`
@@ -22,6 +23,10 @@ export default function CategoryScreen({ route, navigation }) {
     navigation.setOptions({ title, });
   },[]);
 
+  if (isLoading==true) {
+    return(
+        <Loading />) ;
+  };
   return (
     <Container>
       <RenderBlockComponents 

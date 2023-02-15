@@ -1,6 +1,8 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Button, Alert, Linking, StyleSheet, TouchableOpacity, FlatList, RefreshControl } from 'react-native'
+import React, { useCallback } from 'react'
 import styled from 'styled-components'
+import CustomButton from './CustomButton';
+import loadData from '../utils/utils';
 
 const Component = styled.View`
   flex-direction: row;
@@ -45,21 +47,29 @@ const ComponentDetails = styled.View`
 
 `;
 
-export default function DetailBlockCompoonent({point}) {
+export default function DetailBlockCompoonent({point, url, setFunction, setIsLoading, isLoading}) {
   return (
-    <Component>
-
-        <ComponentDetails>
-            <ComponentTitle>{point.title}</ComponentTitle>
-        </ComponentDetails>
-      
-        <ComponentImage source={{ uri: point.image }}/>
-
-        <ComponentDetails>
-            <ComponentTitle>{point.address}</ComponentTitle>
-            <ComponentTitle>{point.longitude} {point.latitude}</ComponentTitle>
-        </ComponentDetails>
-
-  </Component> 
+         <FlatList
+          refreshControl={<RefreshControl refreshing={isLoading} onRefresh={() => 
+            loadData(
+              url, 
+              setFunction, 
+              setIsLoading)}/>}
+          data={[point]}
+          renderItem={({item}) => 
+              <Component>
+                <ComponentDetails>
+                    <ComponentTitle>{item.title}</ComponentTitle>
+                </ComponentDetails>
+                <ComponentImage source={{ uri: item.image }}/>
+                <ComponentDetails>
+                    <ComponentTitle>{item.address}</ComponentTitle>
+                    <ComponentTitle>{item.longitude} {item.latitude}</ComponentTitle>
+                </ComponentDetails>
+                <CustomButton onPress={()=>
+                  Linking.openURL(`geo:${item.latitude}, ${item.longitude}`)}>Мобильные карты</CustomButton>
+                <CustomButton onPress={() => 
+                  Linking.openURL(`https://yandex.ru/maps/?ll=${item.longitude},${item.latitude}&z=20`)}>Web Yandex maps</CustomButton>
+              </Component> }/>
   )
-}
+};
