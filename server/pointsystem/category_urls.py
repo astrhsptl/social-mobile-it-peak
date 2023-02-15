@@ -7,5 +7,5 @@ from .views import (
 
 urlpatterns = [
     path('', CategoriesAPIView.as_view(), name='categories'),
-    path('<int:pk>/', CategoriesDetailAPIView.as_view(), name='category_detail'),
+    path('<uuid:pk>/', CategoriesDetailAPIView.as_view(), name='category_detail'),
 ]

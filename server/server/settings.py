@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # third part
     'authsystem.apps.AuthsystemConfig',
     'pointsystem.apps.PointsystemConfig',
+    'faqsystem.apps.FaqsystemConfig',
 ]
 
 MIDDLEWARE = [

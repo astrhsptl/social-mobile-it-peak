@@ -29,6 +29,7 @@ urlpatterns = [
 
             path('', include('pointsystem.urls')),
             path('auth/', include('authsystem.urls')),
+            path('faq/', include('faqsystem.urls')),
         ])),
     ]))
 ] + static(

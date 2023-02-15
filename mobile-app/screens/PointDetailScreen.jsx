@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import axios  from 'axios';
 import styled from 'styled-components/native';
 import loadData from '../utils/utils';
 import DetailBlockCompoonent from '../components/DetailBlockCompoonent';
