@@ -7,7 +7,7 @@ def get_coord(adress):
     url = 'https://geocode-maps.yandex.ru/1.x'
     params = dict()
     params['geocode'] = adress
-    params['apikey'] = '40d1649f-0493-4b70-98ba-98533de7710b'
+    params['apikey'] = key
     params['format'] = 'json'
     response = requests.get(url, params=params)
     data = json.loads(response.content)
