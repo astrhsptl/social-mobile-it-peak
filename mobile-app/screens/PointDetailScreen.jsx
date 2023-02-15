@@ -11,12 +11,13 @@ const Container = styled.View`
 
 export default function PointDetailScreen({ route, navigation }) {
   const [point, setPoint] = useState({});
+  const [isLoadin, setIsLoading] = useState({});
   const {id, title} = route.params;
 
   useEffect(()=>{
       loadData(
         `http://alexander.kizimenko.fvds.ru/api/v1/docs/points/detail/${id}/`,
-        setPoint);
+        setPoint, setIsLoading);
     navigation.setOptions({ title, });
   },[]);
 

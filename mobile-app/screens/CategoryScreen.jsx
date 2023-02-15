@@ -12,18 +12,26 @@ const Container = styled.View`
 
 export default function CategoryScreen({ route, navigation }) {
   const [points, setPoints] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const {id, title} = route.params;
 
   useEffect(()=>{
     loadData(
       `http://alexander.kizimenko.fvds.ru/api/v1/docs/points/settings/?category_id=${id}`,
-      setPoints);
+      setPoints, setIsLoading);
     navigation.setOptions({ title, });
   },[]);
 
   return (
     <Container>
-      <RenderBlockComponents param={points} redirectPath={'PointDetailScreen'} navigation={navigation}/>        
+      <RenderBlockComponents 
+        isLoading={isLoading} 
+        url={`http://alexander.kizimenko.fvds.ru/api/v1/docs/points/settings/?category_id=${id}`}
+        setFunction={setPoints}
+        setIsLoading={setIsLoading}
+        param={points} 
+        redirectPath={'PointDetailScreen'} 
+        navigation={navigation}/>
     </Container>
   );
 }

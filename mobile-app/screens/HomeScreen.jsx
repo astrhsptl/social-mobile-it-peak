@@ -12,16 +12,23 @@ const Container = styled.View`
 
 export default function HomeScreen({ navigation }) {
   const [categories, setCategories] = useState({});
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{
-    loadData('http://alexander.kizimenko.fvds.ru/api/v1/docs/categories/', setCategories);
+    loadData('http://alexander.kizimenko.fvds.ru/api/v1/docs/categories/', setCategories, setIsLoading);
     navigation.setOptions({ title: 'Категории пунктов помощи', });
   },[]);
 
   return (
     <Container>
-      <RenderBlockComponents param={categories} redirectPath={'CategoryScreen'} navigation={navigation}/>
+      <RenderBlockComponents 
+        isLoading={isLoading} 
+        url={'http://alexander.kizimenko.fvds.ru/api/v1/docs/categories/'}
+        setFunction={setCategories}
+        setIsLoading={setIsLoading}
+        param={categories} 
+        redirectPath={'CategoryScreen'} 
+        navigation={navigation}/>
     </Container> 
   );
 }

@@ -1,6 +1,6 @@
 import axios  from 'axios';
 
-export default async function loadData(url, setFunction) {
+export default async function loadData(url, setFunction, setIsLoading) {
     await axios.get(
       url
     ).then(
@@ -11,4 +11,5 @@ export default async function loadData(url, setFunction) {
           console.log(err); 
           alert('Ошибка при получении информации!')}
       );
+    await setIsLoading(false)
   }
