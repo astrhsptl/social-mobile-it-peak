@@ -9,6 +9,30 @@ import Loading from '../components/Loading';
 
 const Container = styled.View`
   flex: 1;
+  background-color: white;
+`;
+
+const ButtonOpacity = styled.TouchableOpacity`
+  background-color: #000;
+  
+  width: 98%;
+
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-top: 4px;
+  padding: 12px 10px;
+  align-self: center;
+
+`;
+
+const ButtonText = styled.Text`
+  color: #000;
+
+  align-self: center;
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: bold;
 `;
 
 export default function CategoryScreen({ route, navigation }) {
@@ -37,6 +61,11 @@ export default function CategoryScreen({ route, navigation }) {
         param={points} 
         redirectPath={'PointDetailScreen'} 
         navigation={navigation}/>
+
+      <ButtonOpacity onPress={() => 
+        navigation.navigate('FAQsScreen',)} >
+        <ButtonText>FAQs</ButtonText>
+      </ButtonOpacity>
     </Container>
   );
 }

@@ -8,6 +8,8 @@ import DetailBlockCompoonent from '../components/DetailBlockCompoonent';
 
 const Container = styled.View`
   flex: 1;
+  background-color: white;
+
 `;
 
 export default function PointDetailScreen({ route, navigation }) {

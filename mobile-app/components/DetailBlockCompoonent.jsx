@@ -16,10 +16,9 @@ const Component = styled.View`
   margin-top: 5px;
 
   background-color: white;
-
   border: 1px solid black;
   border-radius: 5px;
-
+ 
 `;
 
 const ComponentImage = styled.Image`

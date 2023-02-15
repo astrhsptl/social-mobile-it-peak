@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
+import { Button } from 'react-native';
 import styled from 'styled-components/native';
 import Loading from '../components/Loading';
 import RenderBlockComponents from '../components/RenderBlockComponents';
@@ -7,9 +8,12 @@ import loadData from '../utils/utils';
 
 const Container = styled.View`
   flex: 1;
+  background-color: white;
+
 `;
 
 const CategotryBox = styled.View`
+  border: 2px solid black;
 `;
 
 const ButtonOpacity = styled.TouchableOpacity`
@@ -19,9 +23,8 @@ const ButtonOpacity = styled.TouchableOpacity`
 
   border: 1px solid #fff;
   border-radius: 5px;
-  
+  margin-top: 4px;
   padding: 12px 10px;
-  margin-top: 5px;
   align-self: center;
 
 `;
@@ -53,20 +56,19 @@ export default function HomeScreen({ navigation }) {
   
   return (
     <Container>
-          <CategotryBox>
-          <RenderBlockComponents 
-            isLoading={isLoading} 
-            url={'http://alexander.kizimenko.fvds.ru/api/v1/docs/categories/'}
-            setFunction={setCategories}
-            setIsLoading={setIsLoading}
-            param={categories} 
-            redirectPath={'CategoryScreen'} 
-            navigation={navigation}/>
-        </CategotryBox>
-        <ButtonOpacity onPress={() => 
-          navigation.navigate('FAQsScreen',)} >
-          <ButtonText>FAQs</ButtonText>
-        </ButtonOpacity>
+      <RenderBlockComponents 
+        isLoading={isLoading} 
+        url={'http://alexander.kizimenko.fvds.ru/api/v1/docs/categories/'}
+        setFunction={setCategories}
+        setIsLoading={setIsLoading}
+        param={categories} 
+        redirectPath={'CategoryScreen'} 
+        navigation={navigation}/>
+
+      <ButtonOpacity onPress={() => 
+        navigation.navigate('FAQsScreen',)} >
+        <ButtonText>FAQs</ButtonText>
+      </ButtonOpacity>
     </Container> 
   );
 };
